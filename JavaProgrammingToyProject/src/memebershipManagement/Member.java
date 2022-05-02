@@ -2,15 +2,15 @@ package memebershipManagement;
 
 public class Member {
 
-	private String member_id;
+	private String memberId;
 	private String name;
-	private String phone_number;
+	private String phoneNumber;
 	
 	public String getMember_id() {
-		return member_id;
+		return memberId;
 	}
 	public void setMember_id(String member_id) {
-		this.member_id = member_id;
+		this.memberId = member_id;
 	}
 	public String getName() {
 		return name;
@@ -19,16 +19,14 @@ public class Member {
 		this.name = name;
 	}
 	public String getPhone_number() {
-		return phone_number;
+		return phoneNumber;
 	}
 	public void setPhone_number(String phone_number) {
-		this.phone_number = phone_number;
+		this.phoneNumber = phone_number;
 	}
 	
 	@Override
 	public String toString() {
-		return "Member [member_id=" + member_id + ", name=" + name + ", phone_number=" + phone_number + "]";
+		return "Member [memberId=" + memberId + ", name=" + name + ", phoneNumber=" + phoneNumber + "]";
 	}
-	
-	
 }

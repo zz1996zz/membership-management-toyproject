@@ -1,5 +1,7 @@
 package memebershipManagement;
 
+import java.io.IOException;
+
 public class MainClass {
 
 	public static void main(String[] args) {
@@ -9,7 +11,11 @@ public class MainClass {
 		System.out.println("#############################");
 
 		MemberManager memberManager = new MemberManager();
-		memberManager.readMenu();
+		try {
+			memberManager.readMenu();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 		System.out.println("#############################");
 		System.out.println("##### GOOD-BYE 프로그램 종료 #####");
