@@ -1,8 +1,9 @@
-package memebershipManagement;
+package membershipManagement;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.regex.Pattern;
 
 public class MemberManager {
 
@@ -24,7 +25,12 @@ public class MemberManager {
 
 			display();
 			choice = br.readLine();
-			chooseNumber = Integer.parseInt(choice);
+			try {
+				chooseNumber = Integer.parseInt(choice);				
+			} catch (NumberFormatException e) {
+				System.out.println("숫자를 입력해주세요.");
+				continue;
+			}
 
 			switch (chooseNumber) {
 			case 1: {
@@ -116,13 +122,16 @@ public class MemberManager {
 		System.out.println("종료를 원하시면 0번을 입력하세요.");
 	}
 
+	// insert 메소드에서 memberId 유효성 검사
 	public boolean validId(String id) {
 
 		Member member = memberDAO.findMember(id);
+		String pattern = "^(M)-\\d{5}$";
+		
 		if (id.isBlank()) {
 			System.out.println("아이디는 필수 입력항목입니다.");
 			return false;
-		} else if (id.charAt(0) != 'M' || id.length() != 7) {
+		} else if (!Pattern.matches(pattern, id)) {
 			System.out.println("아이디는 'M-'로 시작해야 하며, M-를 포함하여 7개의 문자로 구성해야 합니다.");
 			return false;
 		} else if (member.getMember_id() == "true") {
@@ -133,6 +142,7 @@ public class MemberManager {
 		}
 	}
 
+	// insert 메소드에서 name 유효성 검사
 	public boolean validName(String name) {
 
 		if (name.isBlank()) {
@@ -143,12 +153,15 @@ public class MemberManager {
 		}
 	}
 
+	// insert 메소드에서 phoneNumber 유효성 검사
 	public boolean validPhoneNuber(String phoneNumber) {
 
+		String pattern = "^\\d{3}-\\d{4}-\\d{4}$";
+		
 		if (phoneNumber.isBlank()) {
 			System.out.println("전화전호는 필수 입력항목입니다.");
 			return false;
-		} else if (phoneNumber.length() != 13 || (phoneNumber.charAt(3) != '-' && phoneNumber.charAt(8) != '-')) {
+		} else if (!Pattern.matches(pattern, phoneNumber)) {
 			System.out.println("전화번호는 두 개의 '-'를 포함하여 총 13개의 문자로 구성해야 합니다.");
 			return false;
 		} else {
@@ -156,6 +169,7 @@ public class MemberManager {
 		}
 	}
 
+	// update 메소드에서 id 유효성 검사
 	public boolean validUpdateId(String id) {
 		
 		Member member = memberDAO.findMember(id);
@@ -167,6 +181,7 @@ public class MemberManager {
 		}
 	}
 
+	// delete 메소드에서 id 유효성 검사
 	public boolean validDeleteId(String id) {
 
 		Member member = memberDAO.findMember(id);

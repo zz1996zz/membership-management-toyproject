@@ -1,4 +1,4 @@
-package memebershipManagement;
+package membershipManagement;
 
 import java.io.IOException;
 
