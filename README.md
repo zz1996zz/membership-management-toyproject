@@ -19,3 +19,9 @@
   - 회원 정보를 입력받고 유효성 검사 후 MemberDAO를 통해 DB에 저장하고, 수정, 삭제 기능을 하는 클래스이다.
 - Utility
   - DB와의 연결, 연결해제 메소드가 있는 클래스이다.
+
+## Usage
+- h2.jar 파일이 ClassPath에 추가가 되어있는지 확인한다.
+  - 추가방법은 다음 [링크](https://velog.io/@zz1996zz/JDBC)를 참고한다.
+- 추가 후에 H2 database가 설치된 위치에 bin폴더안의 h2w.bat파일을 실행시켜 DB 엔진을 실행시킨다.
+- 실행 후에 MainClass를 실행시키면 프로그램이 동작한다.
